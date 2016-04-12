@@ -9,7 +9,9 @@ Assignment : Final Project
 *****************************************/
 
 
-int readDaily(char[256] filename, ListNodePtr startPtr);
+void readDaily(char[256] filename, ListNodePtr startPtr);
+
+void readGroup(char[256] filename, ListNodePtr startPtr);
 
 //Declare Daily file linked list
 ListNodePtr startPtr;
@@ -20,4 +22,5 @@ typedef struct listNodes {
 	int employee;
 	char[2] location;
 	char[50] description;
-}
+	ListNode *nextPtr;
+} ListNode;

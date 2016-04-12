@@ -14,25 +14,25 @@ Method : linked lists, binary/text files
 #include <stdio.h>
 #include "action.h"
 
-int main(void){
+int main(argc, char *argv[]){
 	
-	//instantiate linked list of info from daily file	
+	//instantiate linked list of info from daily file
+	startPtr = NULL;
 	
-	//open daily file
+	//open daily file and read information to linked list (call readDaily())
+	readDaily(argv[1], startPtr);
 	
-	//read in daily file to C linked list
+	while (restart != no){
+		
+		//if group file exists, read in group file to C struct and add as node to linked list
+		readGroup(argv[2], startPtr);
 	
-	//close daily file
+		//ask user about displaying records
 	
-	//open group file
+		//ask user for start/end date and time and employee #
 	
-	//if group file exists, read in group file to C struct and add as node to linked list
+		//display according records
 	
-	//ask user about displaying records
-	
-	//ask user for start/end date and time and employee #
-	
-	//display according records
-	
-	//loop the bitch
+		//loop the bitch
+	}
 }

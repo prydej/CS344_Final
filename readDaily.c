@@ -11,7 +11,7 @@ Output : Linked list with all information in daily file
 Method : printf function 
 *****************************************/
 
-int readDaily(char[256] filename, ListNodePtr startPtr){
+ListNodePtr readDaily(char* filename[], ListNodePtr startPtr){
 	
 	FILE * daily;
 	
@@ -20,7 +20,8 @@ int readDaily(char[256] filename, ListNodePtr startPtr){
 	
 	//if daily file exists, fill linked list with daily file info
 	if (daily != NULL){
-		for 
+		//loop through all info in daily file and add each item to linked list
 	}
 	
+	//return ppointer to linked list
 }
