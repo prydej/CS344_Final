@@ -14,20 +14,10 @@ Method : linked lists, binary/text files
 #include <stdio.h>
 #include "action.h"
 
-//Declare Daily file linked list
-ListNodePtr startPtr;
-
-typedef struct listNodes {
-	int time;
-	int date;
-	int employee;
-	char[2] location;
-	char[50] description;
-}
-
 int main(void){
 	
-		
+	//instantiate linked list of info from daily file	
+	
 	//open daily file
 	
 	//read in daily file to C linked list

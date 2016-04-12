@@ -11,9 +11,7 @@ Output : Linked list with all information in daily file
 Method : printf function 
 *****************************************/
 
-#include <stdio.h>
-
-int main(char[256] filename, ListNodePtr startPtr){
+int readDaily(char[256] filename, ListNodePtr startPtr){
 	
 	FILE * daily;
 	
