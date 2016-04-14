@@ -25,4 +25,4 @@ void readGroup(char* filename[], ListNodePtr startPtr){
 		//insert new node 
 	
 	//if file does not exist, return from function
-}
+} //end readGroup

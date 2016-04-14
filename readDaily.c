@@ -21,7 +21,7 @@ ListNodePtr readDaily(char* filename[], ListNodePtr startPtr){
 	//if daily file exists, fill linked list with daily file info
 	if (daily != NULL){
 		//loop through all info in daily file and add each item to linked list
-	}
+	} //end if
 	
 	//return ppointer to linked list
-}
+}//end readDaily

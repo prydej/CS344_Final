@@ -13,12 +13,13 @@ void readDaily(char[256] filename, ListNodePtr startPtr);
 
 void readGroup(char[256] filename, ListNodePtr startPtr);
 
+
+
 //Declare Daily file linked list
 ListNodePtr startPtr;
 
 typedef struct listNodes {
 	int time;
-	int date;
 	int employee;
 	char[2] location;
 	char[50] description;
