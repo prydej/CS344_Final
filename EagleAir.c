@@ -22,14 +22,13 @@ int main(argc, char *argv[]){
 	char dispRecord;
 	int startTime, endTime, employeeID;
 	int searchIter = 0;
-	int 
 	char location[2];
 	
 	//open daily file and read information to linked list (call readDaily())
-	readDaily(argv[1], startPtr);
+	readtoLL(argv[1], startPtr);
 		
 	//if group file exists, read in group file to C struct and add as node to linked list
-	readGroup(argv[2], startPtr);
+	readtoLL(argv[2], startPtr);
 	
 	while (restart != no){
 		displayMenu();
