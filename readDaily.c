@@ -11,17 +11,39 @@ Output : Linked list with all information in daily file
 Method : printf function 
 *****************************************/
 
+#include "action.h"
+
 ListNodePtr readDaily(char* filename[], ListNodePtr startPtr){
 	
-	FILE * daily;
+	ListNodePtr currentPtr;
+	ListNode tempNodePtr;
 	
-	//open daily file
-	daily = fopen(filename, "rb");
 	
-	//if daily file exists, fill linked list with daily file info
-	if (daily != NULL){
-		//loop through all info in daily file and add each item to linked list
-	} //end if
+	//open file for reading
+	FILE* daily = fopen(filename, "rb");
 	
-	//return ppointer to linked list
+	//if file exists, add contents to linked listNodes
+	if (daily == NULL){
+		printf("Unable to read daily file!\n");
+		return NULL;
+	} else if {
+		//find number of records in file
+		fseek(daily, 0, SEEK_END); //set pointer at end of filename
+		numRecords = ftell(daily)/sizeof(ListNode); //divide pointer's positionin file by size of record
+		
+		//add all records in file to linked list
+		currentPtr = startPtr //set currentPointer to startPointer
+		
+		//Read a record from the file
+		fseek(daily, 0, SEEK_SET;//set file pointer back to beginning
+		tempNodePtr = malloc(sizeof(ListNode)); //allocate memory for a new node
+		if (tempNodePtr == NULL){
+			
+			printf("Could not allocate memory for new record from daily file.");
+			return NULL;
+		}//end if
+		
+		fread(&tempNodePtr, sizeof(ListNode), 1, daily);
+	
+	return startPtr
 }//end readDaily

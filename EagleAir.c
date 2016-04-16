@@ -32,7 +32,7 @@ int main(argc, char *argv[]){
 	readGroup(argv[2], startPtr);
 	
 	while (restart != no){
-		
+		displayMenu();
 	} //end while
 	
 	return 0;

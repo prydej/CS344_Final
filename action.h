@@ -8,16 +8,7 @@ Section : 01
 Assignment : Final Project
 *****************************************/
 
-
-void readDaily(char[256] filename, ListNodePtr startPtr);
-
-void readGroup(char[256] filename, ListNodePtr startPtr);
-
-
-
-//Declare Daily file linked list
-ListNodePtr startPtr;
-
+//Linked list node declaration
 typedef struct listNodes {
 	int time;
 	int employee;
@@ -25,3 +16,15 @@ typedef struct listNodes {
 	char[50] description;
 	ListNode *nextPtr;
 } ListNode;
+
+//Function Declarations
+ListNodePtr readDaily(char[256] filename, ListNodePtr startPtr);
+ListNodePtr readGroup(char[256] filename, ListNodePtr startPtr);
+int displayMenu();
+char* getString(int size);
+
+//Declare ListNodePtr
+typedef struct ListNode *ListNodePtr;
+
+//Declare Daily file linked list
+ListNodePtr startPtr;
