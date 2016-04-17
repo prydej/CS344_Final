@@ -6,6 +6,7 @@ Author : Julian G. Pryde
 Course : CS344
 Section : 01
 Assignment : Final Project
+description : header file for the Eagle Airlines project
 *****************************************/
 
 //Linked list node declaration
@@ -28,3 +29,4 @@ char* getString(int size);
 
 //Declare Daily file linked list
 ListNodePtr startPtr;
+

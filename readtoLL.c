@@ -8,7 +8,8 @@ Section : 01
 Assignment : Final Project
 Input :	filename
 Output : Linked list with all information in file
-Method : printf function 
+description : takes a pointer to a pointer to a linked list and a filename of a binary file and adds
+records from file in chronological order to linked list using a time struct member in HHMM format
 *****************************************/
 
 #include "action.h"

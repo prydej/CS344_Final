@@ -14,9 +14,6 @@ Method : printf function
 #include "action.h"
 
 int displayMenu(){
-	//ask user about displaying records
-	printf("Do you want to display a record (y/n)?");
-	dispRecord = getchar();	
 
 	if (dispRecord != 'n'){
 		//ask user for start/end time, location, and employee #

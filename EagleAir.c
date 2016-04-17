@@ -20,9 +20,6 @@ int main(argc, char *argv[]){
 	startPtr = NULL;
 	ListNodePtr* currentPointer;
 	char dispRecord;
-	int startTime, endTime, employeeID;
-	int searchIter = 0;
-	char location[2];
 	
 	//open daily file and read information to linked list (call readDaily())
 	readtoLL(argv[1], startPtr);
@@ -30,8 +27,17 @@ int main(argc, char *argv[]){
 	//if group file exists, read in group file to C struct and add as node to linked list
 	readtoLL(argv[2], startPtr);
 	
-	while (restart != no){
+	//ask user about displaying records
+	printf("Do you want to display a record (y/n)?");
+	dispRecord = getchar();
+	
+	while (restart != 'n'){
+		
 		displayMenu();
+		
+		//ask user to display another record
+		printf("Do you want to display another record (y/n)?");
+		dispRecord = getchar();
 	} //end while
 	
 	return 0;

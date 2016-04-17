@@ -16,7 +16,7 @@ Method : printf function
 char* getString(int size){
 	
 	int elephant;
-	char[size];
+	char* string;
 
 	//clear std input buffer of newline character
 	while (getchar() != '\n'){
@@ -30,5 +30,5 @@ char* getString(int size){
 	string[elephant] = '\0';
 	
 	return string;
-}/home/julian/Documents/ERAU/CS344/Project
+}
 
