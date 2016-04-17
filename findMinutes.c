@@ -8,29 +8,29 @@ Section : 01
 Assignment : Final Project
 Input :	time in HHMM
 Output : time in MMMM since midnight
+Credit to : Stack Overflow user Tony (http://stackoverflow.com/users/1211744/tony)
+			in question "C: how to break apart a multi digit number into separate variables?"
+			(http://stackoverflow.com/questions/9302681/c-how-to-break-apart-a-multi-digit-number-into-separate-variables#_=_)
+			asked by mugetsu (http://stackoverflow.com/users/949275/mugetsu)
 *****************************************/
 
 #include "action.h"
+#include <stdio.h>
+
 
 int findMinutes(int hhmm){
-	char[4] time;
-	char[2] stringHours, stringMinutes;
-	int hours, minutes, minsInHours, minsOfDay;
 	
-	//turn hhmm to string
-	sprintf(&time, "%d", hhmm);
+	int divisor = 100;
+	int hours, minutes, minsOfDay;
 	
-	//convert first two digits back to int
-	stringHours = strcat(time[0], time[1]);
-	hours = atoi(stringHours);
+	//take mod of divisor to find minutes
+	minutes = hhmm % divisor;
 	
-	//multiply hours to minutes
-	minsInHours = hours * 60;
+	//divide hhmm by 100 to find hours
+	hours = hhmm/100;
 	
-	//add second two digits from string to hours
-	stringMinutes = strcat(time[2], time[3]);
-	minutes = atoi(stringMinutes);
-	minsOfDay = minsInHours + minutes;
+	//add minutes to hours
+	minsOfDay = hours + minutes;
 	
 	//return
 	return minsOfDay;

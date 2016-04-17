@@ -12,24 +12,26 @@ Method : printf function
 *****************************************/
 
 #include "action.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int readFile(char* filename[], ListNodePtr startPtr){
+int readtoLL(char* filename, ListNodePtr startPtr){
 	
 	/* Declare variables */
 	
 	int bat, numRecords, tempMinsSinceMidnight, nodeMinsSinceMidnight, hasBeenPlaced;
 	ListNodePtr currentPtr;
-	ListNode tempNodePtr;
+	ListNodePtr tempNodePtr;
 
 	/* open file for reading */
 	
 	FILE* inFile = fopen(filename, "rb");
 	
 	//if file exists, add contents to linked listNodes
-	if (temp == NULL){
+	if (inFile == NULL){
 		printf("Unable to read file!\n");
 		return 1;
-	} else if {
+	} else {
 		
 		/* read files into linked list chronologically*/
 		
@@ -38,9 +40,9 @@ int readFile(char* filename[], ListNodePtr startPtr){
 		numRecords = ftell(inFile)/sizeof(ListNode); //divide pointer's positionin file by size of record
 		
 		//add all records in file to linked list
-		currentPtr = startPtr //set currentPointer to startPointer
+		currentPtr = startPtr; //set currentPointer to startPointer
 		
-		for (bat = 0; bat < numRecords, bat++){//for all records in file
+		for (bat = 0; bat < numRecords; bat++){//for all records in file
 			
 			/* Read a record from the file */
 			fseek(inFile, 0, SEEK_SET);//set file pointer back to beginning
@@ -59,7 +61,7 @@ int readFile(char* filename[], ListNodePtr startPtr){
 				startPtr = tempNodePtr;
 			} else {
 				
-				tempMinsSinceMidnight = findMinutes(currentPointer -> time); //Find time of current record in minutes since midnight
+				tempMinsSinceMidnight = findMinutes(currentPtr -> time); //Find time of current record in minutes since midnight
 
 				hasBeenPlaced = 0;
 				while (currentPtr->nextPtr != NULL && hasBeenPlaced != 1){ //loop through all items in linked list
@@ -73,7 +75,7 @@ int readFile(char* filename[], ListNodePtr startPtr){
 						tempNodePtr->nextPtr = currentPtr->nextPtr;
 				
 						//point current node nextPtr to tempNodePtr 
-						currentPtr->currentPtr = tempNodePtr;
+						currentPtr->nextPtr = tempNodePtr;
 				
 						hasBeenPlaced = 1;
 					} //end if
@@ -83,11 +85,11 @@ int readFile(char* filename[], ListNodePtr startPtr){
 			} //end while
 			if (hasBeenPlaced == 0){
 				//point current node (last node) nextPtr to tempNodePtr 
-				currentPtr->currentPtr = tempNodePtr;
+				currentPtr->nextPtr = tempNodePtr;
 
 			} //end if
 		} //end for
 	} //end if
-	return startPtr
+	return 0;
 } //end readtoLL
 

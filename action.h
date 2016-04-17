@@ -9,22 +9,22 @@ Assignment : Final Project
 *****************************************/
 
 //Linked list node declaration
-typedef struct listNodes {
+struct listNodes {
 	int time;
 	int employee;
-	char[2] location;
-	char[50] description;
-	ListNode *nextPtr;
-} ListNode;
-
-//Function Declarations
-ListNodePtr readDaily(char[256] filename, ListNodePtr startPtr);
-ListNodePtr readGroup(char[256] filename, ListNodePtr startPtr);
-int displayMenu();
-char* getString(int size);
+	char location[2];
+	char description[50];
+	struct listNodes* nextPtr;
+};
 
 //Declare ListNodePtr
-typedef struct ListNode *ListNodePtr;
+typedef struct listNodes ListNode;
+typedef ListNode *ListNodePtr;
+
+//Function Declarations
+int readtoLL(char filename[256], ListNodePtr startPtr);
+int displayMenu();
+char* getString(int size);
 
 //Declare Daily file linked list
 ListNodePtr startPtr;
