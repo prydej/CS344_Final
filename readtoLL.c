@@ -16,7 +16,7 @@ records from file in chronological order to linked list using a time struct memb
 #include <stdio.h>
 #include <stdlib.h>
 
-int readtoLL(char* filename, ListNodePtr startPtr){
+int readtoLL(char* filename, ListNodePtr startPtr, char mode){
 	
 	/* Declare variables */
 	
@@ -28,11 +28,23 @@ int readtoLL(char* filename, ListNodePtr startPtr){
 	
 	FILE* inFile = fopen(filename, "rb");
 	
-	//if file exists, add contents to linked listNodes
 	if (inFile == NULL){
-		printf("Unable to read file!\n");
+		
+		if (mode == 'g'){ //if group file does not exist, return from program
+			printf("The group file could not be loaded.");
+			return 1;
+		} else if (mode == 'd') { //if daily file does not exist, create new file
+			printf("Daily file not found. Creating new one.");
+			
+			FILE* newFile = fopen(filename, "ab+");
+			if (newFile == NULL){
+				printf("Could not create new daily file.");
+				return 1;
+			}
+		}
+	
 		return 1;
-	} else {
+	} else { //if file exists, add contents to linked listNodes
 		
 		/* read files into linked list chronologically*/
 		
@@ -91,6 +103,8 @@ int readtoLL(char* filename, ListNodePtr startPtr){
 			} //end if
 		} //end for
 	} //end if
+	
+	fclose(inFile);
 	return 0;
 } //end readtoLL
 

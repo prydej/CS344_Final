@@ -14,8 +14,13 @@ Method : printf function
 #include "action.h"
 
 int displayMenu(){
-
-	if (dispRecord != 'n'){
+	
+	char dispRecord;
+	int startTime, endTime, employeeID;
+	int searchIter = 0;
+	char seeRecord = 1;
+	char location[2];
+	
 		//ask user for start/end time, location, and employee #
 		printf("Start time: ");
 		scanf("%d", &startTime);
@@ -42,7 +47,7 @@ int displayMenu(){
 			//find where time falls between target times
 			if (currentPointer->time >= startTime){
 			
-			}
+			} //end if
 		
 			//find where employee ID is correct
 	
@@ -51,9 +56,5 @@ int displayMenu(){
 			//display selected records
 		
 			searchIter++; //increment searchIteration
-		}
-	} else {
-		return 0;
-	
-	}
-}
+		}// end while
+} //end displayMenu

@@ -22,10 +22,10 @@ int main(argc, char *argv[]){
 	char dispRecord;
 	
 	//open daily file and read information to linked list (call readDaily())
-	readtoLL(argv[1], startPtr);
+	readtoLL(argv[1], startPtr, 'd');
 		
 	//if group file exists, read in group file to C struct and add as node to linked list
-	readtoLL(argv[2], startPtr);
+	readtoLL(argv[2], startPtr, 'g');
 	
 	//ask user about displaying records
 	printf("Do you want to display a record (y/n)?");
