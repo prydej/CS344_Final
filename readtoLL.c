@@ -1,13 +1,13 @@
 /*****************************************
 Title :	Eagle Airlines
-File	: readFile.c
+File	: readToLL.c
 Date	: 12APR2016
 Author : Julian G. Pryde
 Course : CS344
 Section : 01
 Assignment : Final Project
-Input :	filename
-Output : Linked list with all information in file
+Input :	filename, pointer to linked list, mode for group or daily file
+Output : pointer linked list 
 description : takes a pointer to a pointer to a linked list and a filename of a binary file and adds
 records from file in chronological order to linked list using a time struct member in HHMM format
 *****************************************/
@@ -16,7 +16,7 @@ records from file in chronological order to linked list using a time struct memb
 #include <stdio.h>
 #include <stdlib.h>
 
-int readtoLL(char* filename, ListNodePtr startPtr, char mode){
+ListNodePtr readtoLL(char* filename, ListNodePtr startPtr, char mode){
 	
 	/* Declare variables */
 	
@@ -38,27 +38,26 @@ int readtoLL(char* filename, ListNodePtr startPtr, char mode){
 			
 			FILE* newFile = fopen(filename, "ab+");
 			if (newFile == NULL){
-				printf("Could not create new daily file.");
+				printf("Could not create a new daily file.");
 				return 1;
 			}
 		}
-	
-		return 1;
 	} else { //if file exists, add contents to linked listNodes
 		
 		/* read files into linked list chronologically*/
 		
 		//find number of records in file
 		fseek(inFile, 0, SEEK_END); //set pointer at end of filename
-		numRecords = ftell(inFile)/sizeof(ListNode); //divide pointer's positionin file by size of record
+		numRecords = ftell(inFile)/sizeof(ListNode); //divide pointer's position file by size of record
 		
 		//add all records in file to linked list
 		currentPtr = startPtr; //set currentPointer to startPointer
 		
+		fseek(inFile, 0, SEEK_SET);//set file pointer back to beginning
+		
 		for (bat = 0; bat < numRecords; bat++){//for all records in file
 			
 			/* Read a record from the file */
-			fseek(inFile, 0, SEEK_SET);//set file pointer back to beginning
 			
 			tempNodePtr = malloc(sizeof(ListNode)); //allocate memory for a new node
 			if (tempNodePtr == NULL){
@@ -81,7 +80,7 @@ int readtoLL(char* filename, ListNodePtr startPtr, char mode){
 		
 					nodeMinsSinceMidnight = findMinutes(currentPtr->time); //find time of current node in minutes since midnight
 					
-					//if time is after date of current node and before time of next node
+					//if time is after date of current node
 					if (tempNodePtr->time > currentPtr->time){ //nodes are in ascending order of time, so place after 1st earlier time
 				
 						//point tempNodePtr nextPtr to next node
@@ -96,15 +95,19 @@ int readtoLL(char* filename, ListNodePtr startPtr, char mode){
 					currentPtr = currentPtr->nextPtr;
 				}//end if
 			} //end while
-			if (hasBeenPlaced == 0){
-				//point current node (last node) nextPtr to tempNodePtr 
-				currentPtr->nextPtr = tempNodePtr;
+			
+			if (hasBeenPlaced == 0){ //if place not found, place node at beginning of list
+				//point tempNodePtr to first node in list
+				tempNodePtr -> next = startPtr;
+				
+				//point startPtr to tempNodePtr
+				startPtr = tempNodePtr;
 
 			} //end if
 		} //end for
 	} //end if
 	
 	fclose(inFile);
-	return 0;
+	return startPtr;
 } //end readtoLL
 
